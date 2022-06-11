@@ -1,0 +1,57 @@
+<ion-header [translucent]="true" >
+  <ion-toolbar>
+    <ion-title>
+ <b style="color:red">ADD REQUEST</b> 
+  <br>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" style="border: 10px;" [scrollEvents]="true">
+ 
+  <input type="text" placeholder="Reason" class="form-control" id="UrunMiktar">
+
+
+  <input type="date" placeholder="Date to trip" class="form-control" id="UrunMiktar">
+<br>
+<div class="selectdiv">
+  <select name="category"   id="category" class="ms-1 d-block w-100" required>
+    <option>select a vehicle </option>
+    <option value="threeWheel">Three-Wheel</option>
+    <option value="car">Car</option>
+    <option value="van">Van</option>
+  </select>
+</div>
+ <br>
+  <input ngx-google-places-autocomplete placeholder="from" (onAddressChange)="from($event)" type="text" class="form-control"
+    id="UrunMiktar">
+
+
+  <input ngx-google-places-autocomplete placeholder="to" (onAddressChange)="to($event)" type="text" class="form-control"
+  id="UrunMiktar">
+
+  <ion-button color="success" (click)="setRoutePolyline()" >Route</ion-button>
+  <!--input filed search google map search  location-->
+
+
+  <!--button for setRoutePolyline()-->
+
+
+  <div style="border:10px ;">
+  
+    <agm-map style="height:300px;" [latitude]="latitude" [longitude]="longitude">
+      <agm-marker *ngFor="let m of markerPositions" [markerDraggable]="true" #marker [latitude]="m.lat"
+        [longitude]="m.lng"></agm-marker>
+      <agm-direction *ngIf="dir" [origin]="dir.origin" [destination]="dir.destination"></agm-direction>
+    </agm-map>
+  </div>
+  
+  <br>
+  <ion-label color="primary">DISTANCE</ion-label><p>{{distance}}</p>
+
+  <ion-label color="primary">TIME</ion-label><p>{{time}}</p>
+  <br/>
+ 
+  <ion-button color="danger" style="margin-left: 30%;margin-bottom: 40% ;">Submit Request </ion-button>
+
+</ion-content>

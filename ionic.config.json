@@ -1,0 +1,7 @@
+{
+  "name": "MasProject",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
